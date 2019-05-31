@@ -43,7 +43,7 @@ function getBoardsName() {
   var url = 'https://api.trello.com/1/members/' + user + '/boards?key=' + api_key + '&token=' + api_token + '&fields=name';
   var res = UrlFetchApp.fetch(url, {'method':'get'});
   var json = JSON.parse(res.getContentText());
-  return json[2].name;
+  return json[0].name;
 }
 
 function getListsName() {
@@ -106,7 +106,6 @@ function setCardsDesign(sheet,cell,obj){
     obj.setmaxSize(tempsize);
     sheet.setColumnWidth(col, obj.getmaxSize());
     Logger.log(col);
-//    Logger.log(sheet.getColumnWidth(col))
   }
 }
 
